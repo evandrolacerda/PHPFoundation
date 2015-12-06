@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
-    <li><a href="index.php?page=home">Home</a></li>
-    <li><a href="index.php?page=produtos">Produtos</a></li>
+    <li><a href="/home">Home</a></li>
+    <li><a href="/produtos">Produtos</a></li>
 </ol>
 <h1>Produtos</h1>
 <ul>

@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
-    <li><a href="index.php?page=home">Home</a></li>
-    <li><a href="index.php?page=contato">Contato</a></li>
+    <li><a href="/home">Home</a></li>
+    <li><a href="/contato">Contato</a></li>
 </ol>
 
 <?php
@@ -22,7 +22,7 @@ if (isset($_SESSION['erros'])) {
 }
 ?>
 <div class="well">
-    <form class="form-horizontal" method="post" action="index.php?page=envia_contato">
+    <form class="form-horizontal" method="post" action="/envia_contato">
         <fieldset>
             <legend>Entre em Contato</legend>
             <div class="form-group">	

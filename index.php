@@ -1,6 +1,8 @@
-<?php 
-    require_once './bootstrap.php';
-    
+<?php
+require_once './bootstrap.php';
+
+$rota = parse_url('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+$uri = ltrim( $rota['path'], '/'); 
 ?>
 <!DOCTYPE html>
 <html lang="pt_BR">
@@ -40,33 +42,7 @@
 
             <div id="content">
                 <?php
-                if (isset($_GET['page'])) {
-                    switch ($_GET['page']) {
-                        case 'contato':
-                            require_once './contato.php';
-                            break;
-                        case 'produtos':
-                            require_once './produtos.php';
-                            break;
-                        case 'empresa':
-                            require_once './empresa.php';
-                            break;
-                        case 'home':
-                            require_once './home.php';
-                            break;
-                        case 'servicos':
-                            require_once './servicos.php';
-                            break;
-                        default :
-                        case 'envia_contato':
-                            require_once './envia_contato.php';
-                            break;
-                        default :
-                            echo '<h1>Página não encontrada</h1>';
-                    }
-                } else {
-                    require_once './home.php';
-                }
+                    verifica_rota($uri);
                 ?>                
             </div>
 

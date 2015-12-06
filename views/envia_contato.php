@@ -79,6 +79,6 @@ if (isset($_POST)) {
         //coloca os erros e os dados preenchidos na na session 
         $_SESSION['erros'] = $erros;
         $_SESSION['dados'] = $_POST;
-        header('Location: index.php?page=contato');
+        header('Location: /contato');
     }
 }
