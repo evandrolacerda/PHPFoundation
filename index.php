@@ -2,7 +2,10 @@
 require_once './bootstrap.php';
 
 $rota = parse_url('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-$uri = ltrim( $rota['path'], '/'); 
+$uri = ltrim( $rota['path'], '/');
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt_BR">

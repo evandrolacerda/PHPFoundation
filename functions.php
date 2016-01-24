@@ -11,7 +11,8 @@ function verifica_rota($uri)
         'contato'       => 'contato.php', 
         'servicos'      => 'servicos.php',
         'produtos'      => 'produtos.php', 
-        'envia_contato' => 'envia_contato.php'
+        'envia_contato' => 'envia_contato.php',
+        'busca'         => 'busca.php'
         );
 
     $response = null;
