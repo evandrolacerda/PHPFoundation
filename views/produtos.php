@@ -1,8 +1,6 @@
 <?php
-require_once './Conexao.php';
-
 //Conexão com o banco de dados
-$connOb = new Conexao();
+$connOb = new \App\Database\Conexao();
 $connection = $connOb->getConnection();
 ?>
 <ol class="breadcrumb">
@@ -13,15 +11,18 @@ $connection = $connOb->getConnection();
 <?php
 $stmt = $connection->prepare("SELECT * FROM produtos");
 $stmt->execute();
-?>
-<ul>
-    <?php
-    while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-        ?>
-        <li><?php
-            echo htmlentities($row['nome'], ENT_QUOTES, 'UTF-8');
-        ?></li>
-            <?php
-    }
+
+while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
     ?>
-</ul>
+        <div class="panel panel-info">
+            <div class="panel-heading"><?php echo htmlentities($row['nome'], ENT_QUOTES, 'UTF-8'); ?></div>
+            <div class="panel-body">
+                  <?php 
+                    echo $row['descricao'];
+                ?>
+            </div>
+        </div>
+        
+    <?php
+}
+?>

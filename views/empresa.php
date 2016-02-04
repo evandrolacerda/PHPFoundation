@@ -1,5 +1,5 @@
 <?php
-require './Conexao.php';
+use App\Database\Conexao;
 
 $connOb = new Conexao();
 $connection = $connOb->getConnection();
@@ -15,5 +15,5 @@ $row = $stmt->fetch(\PDO::FETCH_ASSOC);
 <h1><?php echo htmlentities($row['nome'], ENT_QUOTES, 'UTF-8');?></h1>
 
 <p><?php 
-echo htmlentities($row['descricao'], ENT_QUOTES, 'UTF-8');
+echo $row['descricao'];
 ?></p>

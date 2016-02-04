@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . '/../Conexao.php';
 
-$connOb = new Conexao();
+
+$connOb = new \App\Database\Conexao();
 $connection = $connOb->getConnection();
 
 //sanitiza a string de busca

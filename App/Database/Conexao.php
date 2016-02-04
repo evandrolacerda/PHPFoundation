@@ -1,4 +1,5 @@
 <?php
+namespace App\Database;
 
 /**
  * Description of Conexao
@@ -16,7 +17,7 @@ class Conexao
 
     public function __construct()
     {
-        $config = include 'config.php';
+        $config = include __DIR__ . '/../config/config.php';
 
         $this->dbname = $config['database']['dbname'];
         $this->user = $config['database']['user'];

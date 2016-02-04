@@ -2,10 +2,7 @@
 require_once './bootstrap.php';
 
 $rota = parse_url('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-$uri = ltrim( $rota['path'], '/');
-
-
-
+$uri = ltrim($rota['path'], '/');
 ?>
 <!DOCTYPE html>
 <html lang="pt_BR">
@@ -28,7 +25,7 @@ $uri = ltrim( $rota['path'], '/');
         <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
         <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
+        <script src="//cdn.ckeditor.com/4.5.6/full/ckeditor.js"></script>
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -41,18 +38,58 @@ $uri = ltrim( $rota['path'], '/');
         <div class="container">
             <?php
             require_once './templates/menu_topo.php';
+
+            if (isset($_SESSION['username'])) {
+                require_once './templates/menu_topo_admin.php';
+            }
             ?>
+
 
             <div id="content">
                 <?php
-                    verifica_rota($uri);
+                if (isset($_SESSION['erros']) && count($_SESSION['erros']) > 0) {
+                    ?>
+                    <div class="alert alert-danger">
+                        <ul>
+                            <?php foreach ($_SESSION['erros'] as $erro) :
+                                ?>
+                                <li><?php echo $erro; ?></li>
+                                <?php
+                            endforeach;
+                            unset($_SESSION['erros']);
+                            ?>
+                        </ul>
+                    </div>
+
+                    <?php
+                }
+
+                if (isset($_SESSION['status'])) {
+                    ?>
+                    <div class="alert alert-success">
+                        <ul>
+
+                            <li><?php echo $_SESSION['status']; ?></li>
+                            <?php
+                            unset($_SESSION['status']);
+                            ?>
+                        </ul>
+                    </div>
+
+                    <?php
+                }
+                ?>
+
+
+                <?php
+                verifica_rota($uri);
                 ?>                
             </div>
 
 
-<?php
-require_once './templates/rodape.php';
-?>
+            <?php
+            require_once './templates/rodape.php';
+            ?>
         </div> <!-- /container -->
 
 
